@@ -30,25 +30,33 @@
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				<li class="nav-header">NAVIGATION</li>
 				<li class="nav-item">
-					<a href="pages/calendar.html" class="nav-link active">
-						<i class="nav-icon fa fa-chart-bar"></i>
-						<p>แดชบอร์ด<span class="badge badge-info right">2</span></p>
-					</a>
-				</li>
-				<li class="nav-item">
-					<a href="#" class="nav-link">
-						<i class="nav-icon far fa-address-card"></i>
-						<p>ข้อมูล<i class="fas fa-angle-left right"></i></p>
+					<a href="#" class="nav-link active">
+						<i class="fas fa-external-link-alt"></i>
+						<p>&nbsp;GISAID<i class="fas fa-angle-left right"></i></p>
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="{{ route('gisaid.index') }}" class="nav-link"><i class="far fa-circle nav-icon"></i><p>GisAid</p></a>
+							<a href="{{ route('gisaid.index') }}" class="nav-link"><i class="fas fa-table fa-sm"></i>&nbsp;&nbsp;รายการข้อมูล</a>
 						</li>
 						<li class="nav-item">
-							<a href="" title="Import" class="nav-link"><i class="far fa-circle nav-icon"></i><p>นำเข้าข้อมูล</p></a>
+							<a href="" title="Import" class="nav-link"><i class="fas fa-download fa-sm"></i>&nbsp;&nbsp;ส่งออก</a>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link"><i class="far fa-circle nav-icon"></i><p>ส่งออกข้อมูล</p></a>
+							<a href="#" class="nav-link"><i class="fas fa-chart-pie fa-sm"></i>&nbsp;&nbsp;Dashboard</a>
+						</li>
+					</ul>
+				</li>
+				<li class="nav-item">
+					<a href="#" class="nav-link">
+						<i class="fas fa-virus"></i>
+						<p>&nbsp;Omicron<i class="fas fa-angle-left right"></i></p>
+					</a>
+					<ul class="nav nav-treeview">
+						<li class="nav-item">
+							<a href="#" class="nav-link"><i class="fas fa-table fa-sm"></i>&nbsp;&nbsp;รายการข้อมูล</a>
+						</li>
+						<li class="nav-item">
+							<a href="" title="Import" class="nav-link"><i class="fas fa-download fa-sm"></i>&nbsp;&nbsp;ส่งออก</a>
 						</li>
 					</ul>
 				</li>

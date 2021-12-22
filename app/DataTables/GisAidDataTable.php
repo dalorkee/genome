@@ -37,20 +37,23 @@ class GisAidDataTable extends DataTable
 	public function html() {
 		return $this->builder()
 			->setTableId('gisaid-table')
+			->setTableAttribute("class", "table table-hover table-striped w-100 display nowrap")
+			->responsive(true)
 			->columns($this->getColumns())
 			->minifiedAjax()
 			->dom('Bfrtip')
 			->orderBy(0)
 			->buttons(
 				Button::make('create')->addClass('btn btn-success')->text('<i class="fa fa-plus-circle"></i> <span class="d-none d-sm-inline">เพิ่มข้อมูลตัวอย่าง</span>')->action("window.location = '".route('gisaid.create')."';"),
-				Button::make('export')->addClass('btn btn-info ml-1')->text('<i class="fa fa-download"></i> <span class="d-none d-sm-inline">ส่งออก</span>'),
-				// Button::make('print'),
-				// Button::make('reset'),
+				Button::make('csv')->addClass('btn btn-info ml-1')->text('<i class="fa fa-download"></i> <span class="d-none d-sm-inline">ส่งออก</span>'),
+				Button::make('print')->addClass('btn btn-danger ml-1')->text('<i class="fa fa-print"></i> <span class="d-none d-sm-inline">พิมพ์</span>'),
+				// Button::make('reset')->addClass('btn btn-danger ml-1')->text('<i class="fa fa-cross"></i> <span class="d-none d-sm-inline">ลบข้อมูล</span>'),
 				// Button::make('reload')
 		)
 		->parameters([
 			'language' => ['url'=>url('/vendor/datatables/i18n/thai.json')],
-            "lengthMenu" =>  [[15, 25, -1], [15, 25, "All"]]
+			"lengthMenu" =>  [[15, 25, -1], [15, 25, "All"]],
+			"scrollX" => true
 		]);
 	}
 
@@ -67,16 +70,27 @@ class GisAidDataTable extends DataTable
 			Column::make('accession_id'),
 			Column::make('collection_date'),
 			Column::make('countinent'),
-            Column::make('country'),
+			Column::make('country'),
 			Column::make('province'),
 			Column::make('province_2'),
-			Column::make('created_at'),
-			Column::make('updated_at'),
-			Column::computed('action')
-				->exportable(false)
-				->printable(false)
-				->width(60)
-				->addClass('text-center'),
+			Column::make('odpc'),
+			Column::make('host'),
+			Column::make('additional_location_infomation'),
+			Column::make('sampling_strategy'),
+			Column::make('gender'),
+			Column::make('patient_age'),
+			Column::make('patient_status'),
+			Column::make('last_vaccinated'),
+			Column::make('passage'),
+			Column::make('specimen'),
+			Column::make('additional_host_information'),
+			Column::make('lineage'),
+			Column::make('clade')
+			// Column::computed('action')
+			// 	->exportable(false)
+			// 	->printable(false)
+			// 	->width(60)
+			// 	->addClass('text-center'),
 		];
 	}
 

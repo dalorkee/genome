@@ -17,3 +17,4 @@
 <script src="{{ URL::asset('vendor/datatables/Buttons-1.6.5/js/buttons.bootstrap4.min.js') }}"></script>
 
 
+

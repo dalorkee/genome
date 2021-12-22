@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\{Session, Storage, File};
-use App\Models\{GisAid};
+use App\Models\{GisAid,Province};
 use App\DataTables\GisAidDataTable;
 
 class GisAidController extends Controller
@@ -13,14 +13,15 @@ class GisAidController extends Controller
 		return $dataTable->render('gisaid.index');
 	}
 
-	public function create() {
+	public function create(): object {
 		return view('gisaid.import');
 	}
 
-	public function store(Request $request) {
+	public function store(Request $request, Province $province): string {
 		if ($request->input('submit') != null ) {
-
 			if ($request->hasFile('file')) {
+                GisAid::truncate();
+				$prov_list = $province->select('province_name_en', 'zone_id')->get()->keyBy('province_name_en')->toArray();
 				// File Details
 				$file = $request->file('file');
 				$filename = $file->getClientOriginalName();
@@ -70,6 +71,20 @@ class GisAidController extends Controller
 							$country = (isset($exp[1])) ? trim($exp[1]) : "";
 							$prov = (isset($exp[2])) ? trim($exp[2]) : "";
 							$prov2 = (isset($prov) && !empty($prov) && !is_null($prov)) ? str_replace(' ', '', $prov) : "";
+							$odpc = $prov_list[strtolower($prov2)]['zone_id'] ?? "";
+							$host = $importData[4] ?? "";
+							$add_locate = $importData[5] ?? "";
+							$sampling = $importData[6] ?? "";
+							$gender = $importData[7] ?? "";
+							$patient_age = $importData[8] ?? "";
+							$patient_status = $importData[8] ?? "";
+							$last_vacc = $importData[9] ?? "";
+							$passage = $importData[10] ?? "";
+							$specimen = $importData[11] ?? "";
+							$addition_host = $importData[12] ?? "";
+							$lineage = $importData[13] ?? "";
+							$clade = $importData[14] ?? "";
+
 							$insertData = [
 								"virus_name" => $virus_name,
 								"lab" => strtoupper($lab),
@@ -78,11 +93,26 @@ class GisAidController extends Controller
 								"countinent" =>  $continent,
 								"country" => $country,
 								"province" => $prov,
-								"province_2" => $prov2
+								"province_2" => $prov2,
+								"odpc" => $odpc,
+								'host' => $host,
+								'additional_location_infomation' => $add_locate,
+								'sampling_strategy' => $sampling,
+								'gender' => $gender,
+								'patient_age' => $patient_age,
+								'patient_status' => $patient_status,
+								'last_vaccinated' => $last_vacc,
+								'passage' => $passage,
+								'specimen' => $specimen,
+								'additional_host_information' => $addition_host,
+								'lineage' => $lineage,
+								'clade' => $clade
+
+
 							];
 							GisAid::insertData($insertData);
 						}
-						Session::flash('message','Import Successful.');
+						return redirect()->route('gisaid.index')->with('success','Import Successful.');
 					} else {
 						Session::flash('message','File too large. File must be less than 2MB.');
 					}

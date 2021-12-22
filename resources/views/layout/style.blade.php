@@ -13,3 +13,5 @@
 	<link rel="stylesheet" href="{{ URL::asset('vendor/datatables/Responsive-2.2.6/css/responsive.bootstrap4.min.css') }}">
 	<link rel="stylesheet" href="{{ URL::asset('vendor/datatables/Buttons-1.6.5/css/buttons.dataTables.min.css') }}">
     <link rel="stylesheet" href="{{ URL::asset('vendor/datatables/Buttons-1.6.5/css/buttons.bootstrap4.min.css') }}">
+
+
