@@ -29,20 +29,20 @@
 		<nav class="mt-2">
 			<ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
 				<li class="nav-header">NAVIGATION</li>
-				<li class="nav-item">
+				<li class="nav-item menu-open">
 					<a href="#" class="nav-link active">
 						<i class="fas fa-external-link-alt"></i>
 						<p>&nbsp;GISAID<i class="fas fa-angle-left right"></i></p>
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="{{ route('gisaid.index') }}" class="nav-link"><i class="fas fa-table fa-sm"></i>&nbsp;&nbsp;รายการข้อมูล</a>
+							<a href="{{ route('gisaid.index') }}" class="nav-link active">&nbsp;&nbsp;<i class="fas fa-angle-right fa-sm"></i>&nbsp;&nbsp;รายการข้อมูล</a>
 						</li>
 						<li class="nav-item">
-							<a href="" title="Import" class="nav-link"><i class="fas fa-download fa-sm"></i>&nbsp;&nbsp;ส่งออก</a>
+							<a href="" title="Import" class="nav-link">&nbsp;&nbsp;<i class="fas fa-angle-right fa-sm"></i>&nbsp;&nbsp;ส่งออก</a>
 						</li>
 						<li class="nav-item">
-							<a href="#" class="nav-link"><i class="fas fa-chart-pie fa-sm"></i>&nbsp;&nbsp;Dashboard</a>
+							<a href="#" class="nav-link">&nbsp;&nbsp;<i class="fas fa-angle-right fa-sm"></i>&nbsp;&nbsp;Dashboard</a>
 						</li>
 					</ul>
 				</li>

@@ -14,7 +14,8 @@ use App\Http\Controllers\{DashboardController,GisAidController};
 |
 */
 
-Route::get('/', [DashboardController::class, 'index']);
+// Route::get('/', [DashboardController::class, 'index']);
+Route::get('/', [GisAidController::class, 'index']);
 Route::resources([
 	'gisaid' => GisAidController::class,
 ]);
