@@ -36,7 +36,7 @@
 					</a>
 					<ul class="nav nav-treeview">
 						<li class="nav-item">
-							<a href="{{ route('gisaid.index') }}" class="nav-link active">&nbsp;&nbsp;<i class="fas fa-angle-right fa-sm"></i>&nbsp;&nbsp;รายการข้อมูล</a>
+							<a href="#" class="nav-link active">&nbsp;&nbsp;<i class="fas fa-angle-right fa-sm"></i>&nbsp;&nbsp;รายการข้อมูล</a>
 						</li>
 						<li class="nav-item">
 							<a href="" title="Import" class="nav-link">&nbsp;&nbsp;<i class="fas fa-angle-right fa-sm"></i>&nbsp;&nbsp;ส่งออก</a>
