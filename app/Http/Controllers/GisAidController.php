@@ -77,13 +77,13 @@ class GisAidController extends Controller
 							$sampling = $importData[6] ?? "";
 							$gender = $importData[7] ?? "";
 							$patient_age = $importData[8] ?? "";
-							$patient_status = $importData[8] ?? "";
-							$last_vacc = $importData[9] ?? "";
-							$passage = $importData[10] ?? "";
-							$specimen = $importData[11] ?? "";
-							$addition_host = $importData[12] ?? "";
-							$lineage = $importData[13] ?? "";
-							$clade = $importData[14] ?? "";
+							$patient_status = $importData[9] ?? "";
+							$last_vacc = $importData[10] ?? "";
+							$passage = $importData[11] ?? "";
+							$specimen = $importData[12] ?? "";
+							$addition_host = $importData[13] ?? "";
+							$lineage = $importData[14] ?? "";
+							$clade = $importData[15] ?? "";
 
 							$insertData = [
 								"virus_name" => $virus_name,
@@ -136,24 +136,12 @@ class GisAidController extends Controller
 		return $result;
 	}
 
-	public function show(GisAid $gisAid)
-	{
-		//
-	}
+	public function show(GisAid $gisAid) {}
+	public function edit(GisAid $gisAid) {}
+	public function update(Request $request, GisAid $gisAid) {}
+	public function destroy(GisAid $gisAid) {}
 
-	public function edit(GisAid $gisAid)
-	{
-		//
-	}
-
-
-	public function update(Request $request, GisAid $gisAid)
-	{
-		//
-	}
-
-	public function destroy(GisAid $gisAid)
-	{
-		//
+    protected function dashboard(GisAid $gisAid) {
+		return view('gisaid.dashboard');
 	}
 }
