@@ -9,7 +9,7 @@ use App\DataTables\GisAidDataTable;
 
 class GisAidController extends Controller
 {
-	public function index(Request $request, GisAidDataTable $dataTable) {
+	protected function index(Request $request, GisAidDataTable $dataTable) {
 		return $dataTable->render('gisaid.index');
 	}
 
@@ -17,10 +17,10 @@ class GisAidController extends Controller
 		return view('gisaid.import');
 	}
 
-	public function store(Request $request, Province $province): string {
+	protected function store(Request $request, Province $province): string {
 		if ($request->input('submit') != null ) {
 			if ($request->hasFile('file')) {
-                GisAid::truncate();
+				GisAid::truncate();
 				$prov_list = $province->select('province_name_en', 'zone_id')->get()->keyBy('province_name_en')->toArray();
 				// File Details
 				$file = $request->file('file');
@@ -141,7 +141,16 @@ class GisAidController extends Controller
 	public function update(Request $request, GisAid $gisAid) {}
 	public function destroy(GisAid $gisAid) {}
 
-    protected function dashboard(GisAid $gisAid) {
-		return view('gisaid.dashboard');
+	public function dashboard(GisAid $gisAid) {
+		$total_row = $gisAid->count();
+		$gender_male = $gisAid->whereGender('male')->count();
+		$gender_female = $gisAid->whereGender('female')->count();
+		$gender_unknown = $gisAid->whereGender('unknown')->count();
+		return view('gisaid.dashboard', [
+			'total_row' => $total_row,
+			'gender_male' => $gender_male,
+			'gender_female' => $gender_female,
+			'gender_unknown' => $gender_unknown
+		]);
 	}
 }
