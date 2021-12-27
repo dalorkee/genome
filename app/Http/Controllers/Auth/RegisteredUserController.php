@@ -18,9 +18,9 @@ class RegisteredUserController extends Controller
 	 *
 	 * @return \Illuminate\View\View
 	 */
-	public function create()
-	{
-		return view('auth.register');
+	public function create() {
+        dd('Permission denied!');
+		// return view('auth.register');
 	}
 
 	/**
